@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity() {
                 val url = Constants.serverUrl + "order"
                 val queue = Volley.newRequestQueue(this)
 
-                //TODO (Simplify translation to json array)
                 val orderTest = JSONObject()
                 orderTest.put("Products",contents.get("Products"))
                 orderTest.put("Vouchers",contents.get("Vouchers"))
                 orderTest.put("userid", contents.get("userid"))
+                orderTest.put("TotalDiscounted", contents.get("TotalDiscounted"))
                 orderTest.put("Total", contents.get("Total"))
 
                 val jsonObjectRequest = JsonObjectRequest(
