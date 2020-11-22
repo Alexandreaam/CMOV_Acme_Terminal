@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Acme Terminal</string>
     <string name="scan_button">Scan QR code</string>
+    <string name="products">Products</string>
+    <string name="vouchers_title">Vouchers</string>
+    <string name="bonus_title">Bonus</string>
+    <string name="total_title">Total</string>
+    <string name="order_title">Order number:</string>
 </resources>

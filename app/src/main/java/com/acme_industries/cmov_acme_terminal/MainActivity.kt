@@ -3,6 +3,7 @@ package com.acme_industries.cmov_acme_terminal
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val button = findViewById<Button>(R.id.message)
+        val button = findViewById<Button>(R.id.scan_button)
         button.setOnClickListener {
             scanQRCode()
         }
@@ -68,6 +69,19 @@ class MainActivity : AppCompatActivity() {
                     Request.Method.POST, url, orderTest ,
                     { response ->
                         println("Response is: $response")
+
+                        var orderid = response.getString("Orderid")
+                        var termProd = response.getString("terminalProducts").replace("@", "\n")
+                        var termVouch = response.getString("terminalVouchers").replace("@", "\n")
+                        var termPrice = response.getString("terminalPrice").replace("@", "\n")
+                        var termEarn = response.getString("terminalEarned").replace("@", "\n")
+
+                        findViewById<TextView>(R.id.order_card_value).text = orderid
+                        findViewById<TextView>(R.id.product_card_value).text = termProd
+                        findViewById<TextView>(R.id.voucher_card_value).text = termVouch
+                        findViewById<TextView>(R.id.bonus_card_value).text = termPrice
+                        findViewById<TextView>(R.id.total_card_value).text = termEarn
+
                     },
                     { error ->
                         println("That didn't work: ${error.message}")
