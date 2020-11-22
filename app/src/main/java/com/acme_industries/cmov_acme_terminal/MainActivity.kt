@@ -73,14 +73,14 @@ class MainActivity : AppCompatActivity() {
                         var orderid = response.getString("Orderid")
                         var termProd = response.getString("terminalProducts").replace("@", "\n")
                         var termVouch = response.getString("terminalVouchers").replace("@", "\n")
-                        var termPrice = response.getString("terminalPrice").replace("@", "\n")
+                        var termPrice = response.getDouble("Total")
                         var termEarn = response.getString("terminalEarned").replace("@", "\n")
 
                         findViewById<TextView>(R.id.order_card_value).text = orderid
                         findViewById<TextView>(R.id.product_card_value).text = termProd
                         findViewById<TextView>(R.id.voucher_card_value).text = termVouch
-                        findViewById<TextView>(R.id.bonus_card_value).text = termPrice
-                        findViewById<TextView>(R.id.total_card_value).text = termEarn
+                        findViewById<TextView>(R.id.bonus_card_value).text = termEarn
+                        findViewById<TextView>(R.id.total_card_value).text = "${"%.2f€".format(termPrice)}"
 
                     },
                     { error ->
