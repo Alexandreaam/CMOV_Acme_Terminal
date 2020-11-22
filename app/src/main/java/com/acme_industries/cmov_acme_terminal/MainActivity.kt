@@ -2,7 +2,9 @@ package com.acme_industries.cmov_acme_terminal
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -81,6 +83,8 @@ class MainActivity : AppCompatActivity() {
                         findViewById<TextView>(R.id.voucher_card_value).text = termVouch
                         findViewById<TextView>(R.id.bonus_card_value).text = termEarn
                         findViewById<TextView>(R.id.total_card_value).text = "${"%.2f€".format(termPrice)}"
+                        findViewById<ImageView>(R.id.error_icon).visibility = View.GONE
+
 
                     },
                     { error ->
@@ -89,9 +93,21 @@ class MainActivity : AppCompatActivity() {
                 queue.add(jsonObjectRequest)
             } else {
                 Toast.makeText(this, "Invalid QR Code", Toast.LENGTH_LONG).show()
+                findViewById<TextView>(R.id.order_card_value).text = "Error"
+                findViewById<TextView>(R.id.product_card_value).text = ""
+                findViewById<TextView>(R.id.voucher_card_value).text = ""
+                findViewById<TextView>(R.id.bonus_card_value).text = ""
+                findViewById<TextView>(R.id.total_card_value).text = ""
+                findViewById<ImageView>(R.id.error_icon).visibility = View.VISIBLE
             }
         } catch (e: Exception) {
             Toast.makeText(this, "Invalid QR Code", Toast.LENGTH_LONG).show()
+            findViewById<TextView>(R.id.order_card_value).text = "Error"
+            findViewById<TextView>(R.id.product_card_value).text = ""
+            findViewById<TextView>(R.id.voucher_card_value).text = ""
+            findViewById<TextView>(R.id.bonus_card_value).text = ""
+            findViewById<TextView>(R.id.total_card_value).text = ""
+            findViewById<ImageView>(R.id.error_icon).visibility = View.VISIBLE
         }
     }
 }

@@ -7,6 +7,18 @@
     android:background="@drawable/coffeegrid2"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/error_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/bonus_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/product_card"
+        app:srcCompat="@drawable/error" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/order_card"
         android:layout_width="0dp"
@@ -272,5 +284,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
